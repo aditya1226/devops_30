@@ -1,0 +1,19 @@
+apiVersion: apps/v1                 # API version for the Deployment resource
+kind: Deployment                    # Resource type
+metadata:
+  name: my-app                      # Name of the deployment
+spec:
+  replicas: 2                       # Number of Pod replicas
+  selector:                         # How to identify the Pods managed by this deployment
+    matchLabels:
+      app: my-app
+  template:                         # Template for the Pods
+    metadata:
+      labels:
+        app: my-app                 # Labels for Pod selection
+    spec:
+      containers:
+        - name: my-container
+          image: nginx:latest       # Container image
+          ports:
+            - containerPort: 80     # Port exposed by the container
